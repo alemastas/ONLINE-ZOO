@@ -8,6 +8,24 @@
     background: url(../../Assets/Pictures/GiantPanda.png);
 }
 
+.navi{
+    position: relative;
+    list-style: none;
+    width: 1300px;
+    left: 10%;
+    right: 10%;
+
+}
+
+.naviil{
+    display: block;
+    float: left;
+    margin-left: 80px;
+    margin-top: 25px;
+    width: 100px;
+    height: 40px;
+}
+
 .logo {
     position: relative;
     left: 730px;
@@ -35,6 +53,11 @@
     background-color: black;
 }
 
+.button {
+    position: relative;
+    left: 1100px;
+}
+
 .main{
     width: 1600px;
     height: 3752px;
@@ -48,6 +71,7 @@
 
 .section2 {
     position: relative;
+    display: flex;
     width: 1161px;
     height: 403px;
     left: 220px;
@@ -55,9 +79,9 @@
 }
 
 .bamboohat {
-    position: relative;
     width: 609px;
     height: 403px;
+    margin-right: 30px;
 }
 
 .section2text {
