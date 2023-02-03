@@ -1,0 +1,141 @@
+.body {
+    margin: 0px;
+}
+
+.header{
+    width: 1600px;
+    height: 780px;
+    background: url(../../Assets/Pictures/GiantPanda.png);
+}
+
+.logo {
+    position: relative;
+    left: 730px;
+    width: 500px;
+    height: 500px;
+}
+
+.ellipse{
+    position: relative;
+    width: 465px;
+    height: 465px;
+    left: 80px;
+    top: 10px;
+}
+
+.logotext {
+    position: relative;
+    left: 90px;
+    top: -395px
+}
+
+.navigation {
+    width: 1600px;
+    height: 80px;
+    background-color: black;
+}
+
+.main{
+    width: 1600px;
+    height: 3752px;
+}
+
+.backstage {
+    width: 1600px;
+    height: 1827px;
+    background-color: #F1F3F2;
+}
+
+.section2 {
+    position: relative;
+    width: 1161px;
+    height: 403px;
+    left: 220px;
+    top: 140px;
+}
+
+.bamboohat {
+    position: relative;
+    width: 609px;
+    height: 403px;
+}
+
+.section2text {
+    width: 465px;
+}
+
+.flower {
+    width: 293px;
+    height: 605px;
+    left: 1395px;
+    top: -360px;
+}
+
+.palm {
+    position: relative;
+    width: 880px;
+    height: 460px;
+    left: 0px;
+    top: 763px;
+}
+
+.strelizia {
+    position: relative;
+    width: 368px;
+    height: 275px;
+    left: 1228px;
+    top: -275px;
+}
+
+.section3{
+    position: relative;
+    width: 1158px;
+    height: 872px;
+    top: 280px; /* 180 from sec2 */
+    left: 180px;
+    background-color: orangered;
+}
+
+.pickandfeed{
+    position: relative;   
+    width: 1600px;
+    height: 1004px;
+    background-color: #fed290;
+}
+
+.pickfriends{
+    position: relative;
+    top: 8%;
+    left: 13%;
+    width: 1160px;
+    height: 835px;
+    background-color: #febdab;
+}
+
+.testimonials{
+    width: 1600px;
+    height: 919px;
+    background-color: #dfdfff;
+}
+
+.footer {
+    width: 1600px;
+    height: 443px;
+    background-color: #333b41;
+}
+
+@font-face {
+    font-family: 'EntezareZohoor2';
+    src: url('../../Fonts/Roboto-Thin.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.h1 {
+    font-family: Roboto;
+    font-style: bold;
+}
+
+.h2{
+    font-family: Roboto;
+}
