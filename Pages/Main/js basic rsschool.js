@@ -98,6 +98,7 @@ chainMaker.addLink(1).addLink(2).reverseChain().addLink(3).finishChain() => '( 2
 
 class DepthCalculator{
     calculateDepth(arr){
+        this.arr = arr;
         if (!Array.isArray(arr)){ throw new Error('arr is not array')};
     
         let count = 1;
@@ -114,3 +115,51 @@ depthCalc.calculateDepth([1, 2, 3, 4, 5]) // => 1
 depthCalc.calculateDepth([1, 2, 3, [4, 5]]) // => 2
 depthCalc.calculateDepth([[[]]]) // => 3
 */
+
+// extented repeater
+
+function repeater(str = 'default', options = {repeatTimes, separator, 
+    addition : '', additionRepeatTimes, additionSeparator}){
+        let add = (`${options.addition}${options.additionSeparator}`).repeat(options.additionRepeatTimes);
+        let result = '';
+        for(let i = 0; i < options.repeatTimes; i++){
+            result += `${str}${add}${options.separator}`;
+        }
+    return result;
+}
+
+// test repeater('STRING', { repeatTimes: 3, separator: '**', addition: 'PLUS', additionRepeatTimes: 3, additionSeparator: '00' })
+
+class VigenereCipheringMachine{
+    
+        obj = {
+        ru : "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ".split(""),
+        en : "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
+        square : [],
+        genSqViz : function (lang = "en") {
+            var l = this[lang], square = [];
+            for (var i = 0; i < l.length; i++) {
+                this.square[i] = l.slice(i).concat(l.slice(0, i));
+            }
+        },
+        encryption : function (lang = "en", text, key) {
+            if (text.length !== key.length) return false;
+            var s = "";
+            for (var i = 0; i < text.length; i++) {
+                s += this.square[this[lang].indexOf(text[i])][this[lang].indexOf(key[i])];
+            }
+            return s;
+        },
+        decryption : function (lang = "en", key, cipher) {
+            if (cipher.length !== key.length) return false;
+            var s = "";
+            for (var i = 0; i < cipher.length; i++) {
+                var row = this[lang].indexOf(key[i])
+                coll = this.square[row].indexOf(cipher[i]);
+                s += this[lang][coll];
+            }
+            return s;
+        },
+        // https://github.com/GooseBumpsOS/cipher_vigenere
+    }
+}
