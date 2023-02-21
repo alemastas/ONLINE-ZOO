@@ -103,7 +103,7 @@ class DepthCalculator{
     
         let count = 1;
         arr.forEach(el => {
-            if(Array.isArray(el)){ count += DepthCalculator(el) }
+            if(Array.isArray(el)){ count += depthCalc.calculateDepth(el) }
         })
         return count;
     }
@@ -130,36 +130,126 @@ function repeater(str = 'default', options = {repeatTimes, separator,
 
 // test repeater('STRING', { repeatTimes: 3, separator: '**', addition: 'PLUS', additionRepeatTimes: 3, additionSeparator: '00' })
 
-class VigenereCipheringMachine{
+class VigenereCipheringMachine{ // need to fix that
     
-        obj = {
-        ru : "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ".split(""),
-        en : "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
-        square : [],
-        genSqViz : function (lang = "en") {
-            var l = this[lang], square = [];
-            for (var i = 0; i < l.length; i++) {
-                this.square[i] = l.slice(i).concat(l.slice(0, i));
-            }
-        },
-        encryption : function (lang = "en", text, key) {
-            if (text.length !== key.length) return false;
-            var s = "";
-            for (var i = 0; i < text.length; i++) {
-                s += this.square[this[lang].indexOf(text[i])][this[lang].indexOf(key[i])];
-            }
-            return s;
-        },
-        decryption : function (lang = "en", key, cipher) {
-            if (cipher.length !== key.length) return false;
-            var s = "";
-            for (var i = 0; i < cipher.length; i++) {
-                var row = this[lang].indexOf(key[i])
-                coll = this.square[row].indexOf(cipher[i]);
-                s += this[lang][coll];
-            }
-            return s;
-        },
-        // https://github.com/GooseBumpsOS/cipher_vigenere
+    constructor(bool){
+        let handler = bool;
     }
+
+    genSqViz(lang) {
+
+        en : "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
+        square = []
+
+        var l = this[lang], square = [];
+        for (var i = 0; i < l.length; i++) {
+            this.square[i] = l.slice(i).concat(l.slice(0, i));
+        }
+        return square;
+    }
+
+    encrypt(text, key){
+
+        if (text.length !== key.length) return false;
+        var s = "";
+        for (var i = 0; i < text.length; i++) {
+            s += this.square[this[lang].indexOf(text[i])][this[lang].indexOf(key[i])];
+        }
+        return this.constructor.handler == true? s.toUpperCase() : s.split("").reverse().join("").toUpperCase(); // default return s
+    }
+
+    decrypt(key, cipher) {
+
+        if (cipher.length !== key.length) return false;
+        var s = "";
+        for (var i = 0; i < cipher.length; i++) {
+            var row = this[lang].indexOf(key[i])
+            coll = this.square[row].indexOf(cipher[i]);
+            s += this[lang][coll];
+        }
+        return this.constructor.handler == true? s.toUpperCase() : s.split("").reverse().join("").toUpperCase(); // default return s
+    }
+
+        // https://github.com/GooseBumpsOS/cipher_vigenere
+}
+
+    function getCommonCharacterCount(str, strN){
+        if(str.length !== strN.length){ throw new Error('different length of args pairs') }
+        let count = [];
+        
+        function sorted(str){
+            let arr = str.split('').sort()
+            return arr
+        }
+
+        for(let j = 0; j < strN.length; j++){
+            if(sorted(str)[j] === sorted(strN)[j]){
+                count.push(strN)
+            }
+        }
+
+        console.log(sorted(str), sorted(strN))
+        return count.length
+    }
+
+    // getCommonCharacterCount('aabcc', 'adcaa')
+
+function deleteDigit(number){
+    let str = String(number)
+    let arr = []
+    let temp = []
+
+    for(let i = 0; i < str.length; i++){
+        for(let j = 0; j < str.length; j++){
+            if(j !== i){ temp.push(str[j]) }
+            else(console.log())
+        }
+        arr.push(Number(temp.join('')))
+        temp = []
+    }
+    return Math.max.apply(null, arr)
+}
+
+// deleteDigit(152) => 52
+
+function getDNSStats(arr){ // need to make this madness work
+    let elements = []
+    arr.forEach(el => {
+        elements.push(el.split('.'))
+    })
+    elements.forEach(el =>{
+        el.reverse()
+    })
+    return elements
+}
+
+function encoderLine(str){
+    let tempRes = ''
+    let result = ''
+    let count = 0;
+    for(let i = 0; i < str.length; i++){
+        count = 0;
+        for(let j = 0; j < str.length; j++){
+            if(str[i] == str[j]){ count++ }
+        }
+        result += `${count}${str[i]}`
+    }
+    return ([...new Set(result).keys()]).join('').replace('1', '')
+}
+
+// encodeLine('aabbbc') => '2a3bc'
+
+function renameFiles(arr){ // need to fix that
+    let count = 1;
+    for(let i = 0; i < arr.length; i++){
+        count = 1;
+        for(let j = 1; j < arr.length; j++){
+
+            if(arr[i] === arr[j]){
+                arr[j] = `${arr[j]}(${(count)})`
+                count++;
+            }
+        }
+    }
+    return arr
 }
