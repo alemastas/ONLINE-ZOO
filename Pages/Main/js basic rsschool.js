@@ -239,11 +239,11 @@ function encoderLine(str){
 
 // encodeLine('aabbbc') => '2a3bc'
 
-function renameFiles(arr){ // need to fix that
+function renameFiles(arr){ 
     let count = 1;
     for(let i = 0; i < arr.length; i++){
         count = 1;
-        for(let j = 1; j < arr.length; j++){
+        for(let j = i + 1; j < arr.length; j++){
 
             if(arr[i] === arr[j]){
                 arr[j] = `${arr[j]}(${(count)})`
@@ -253,3 +253,80 @@ function renameFiles(arr){ // need to fix that
     }
     return arr
 }
+
+// renameFiles(["file", "file", "image", "file(1)", "file"]) => ["file", "file(1)", "image", "file(1)(1)", "file(2)"]
+
+function getEmailDomain(str){
+    return str.slice(str.indexOf('@') + 1)
+}
+
+// getEmailDomain('prettyandsimple@example.com') => 'example.com'
+
+function isMAC48Address(str){
+    let bool = true;
+    let check = ['0', '1', '2', '3', '4', '5', '6', '7', '8', 
+    '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+    let arr = str.split('-').join('').split('');
+
+    arr.map(el => {
+        if(check.includes(el)){ }
+        else { bool = false }
+    })
+    return bool
+}
+
+// isMAC48Address('00-1B-63-84-45-E6')
+
+function getMatrixElementsSum(matrix){
+    let sum = 0;
+    for(let i = 0; i < 3; i++){
+        for(let j = 0; j < 4; j++){
+            if(i == 0){
+                sum += matrix[i][j]
+            }
+            else if(i == 1){
+                if( matrix[i - 1][j] == 0 ){ }
+                else { sum += matrix[i][j] }
+            }
+            else if(i == 2){
+                if( matrix[i - 1][j] == 0 || matrix[i - 2][j] == 0 ){ }
+                else { sum += matrix[i][j] }
+            }
+        }
+    }
+    return sum;
+}
+
+// getMatrixElementsSum(matrix) => 9
+// const matrix = [
+//     [0, 1, 1, 2],
+//     [0, 5, 0, 0],
+//     [2, 0, 3, 3]
+//    ];
+
+function minesweeper(matrix){ // need to fix that
+    let m = [
+        [1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]
+    ]
+
+    for(let i = 0; i < 3; i++){
+        for(let j = 0; j < 3; j++){
+            if( matrix[i][j] == true ){
+                
+                m[i - 1][j] !== undefined ? m[i - 1][j]++ : console.log('not!') // up
+                m[i][j - 1] !== undefined ? m[i][j - 1]++ : console.log('not!') // l
+                m[i][j + 1] !== undefined ? m[i][j + 1]++ : console.log('not!') // r
+                m[i + 1][j] !== undefined ? m[i + 1][j]++ : console.log('not!') // down
+            }
+        }
+    }
+    return m
+}
+
+const matrix = [
+ [true, false, false],
+ [false, true, false],
+ [false, false, false]
+];
