@@ -221,6 +221,7 @@ function getDNSStats(arr){ // need to make this madness work
         el.reverse()
     })
     return elements
+
 }
 
 function encoderLine(str){
@@ -304,25 +305,28 @@ function getMatrixElementsSum(matrix){
 //     [2, 0, 3, 3]
 //    ];
 
-function minesweeper(matrix){ // need to fix that
-    let m = [
+function minesweeper(matrix){ 
+    let m = matrix;
+    let n = [
         [1, 1, 1],
         [1, 1, 1],
         [1, 1, 1]
     ]
 
-    for(let i = 0; i < 3; i++){
-        for(let j = 0; j < 3; j++){
-            if( matrix[i][j] == true ){
-                
-                m[i - 1][j] !== undefined ? m[i - 1][j]++ : console.log('not!') // up
-                m[i][j - 1] !== undefined ? m[i][j - 1]++ : console.log('not!') // l
-                m[i][j + 1] !== undefined ? m[i][j + 1]++ : console.log('not!') // r
-                m[i + 1][j] !== undefined ? m[i + 1][j]++ : console.log('not!') // down
-            }
-        }
-    }
-    return m
+    if(m[0][0] == true){ n[0][1]++, n[1][0]++ } // r, d
+    else if(m[0][1] == true){ n[0][0]++, n[0][2]++, n[1][1]++ } // l, r, d
+    else if(m[0][2] == true){ n[0][1]++, n[1][2]++ } // l, d
+
+    else if(m[1][0] == true){ n[1][1]++, n[2][0]++, n[0][0]++ } // r, d, u
+    else if(m[1][1] == true){ n[1][0]++, n[0][1]++, n[1][2]++, n[2][1]++ } // l, u, r, d
+    else if(m[1][2] == true){ n[1][1]++, n[2][2]++, n[0][2]++ } // u, l, d
+
+    else if(m[2][0] == true){ n[1][0]++, n[2][1]++ } // u, r
+    else if(m[2][1] == true){ n[2][0]++, n[1][1]++, n[2][2]++ } // l, u, r
+    else if(m[2][2] == true){ n[2][1]++, n[1][2]++ } // l, u
+
+    return n
+
 }
 
 const matrix = [
@@ -330,3 +334,31 @@ const matrix = [
  [false, true, false],
  [false, false, false]
 ];
+
+function sortByHeight(arr){
+    let tempArr = [];
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] == -1){
+            tempArr.push(i)
+            delete arr[i]
+        }
+    }
+    arr.sort()
+    tempArr.forEach(el =>{
+        arr.splice(el, 0, -1)
+    })
+    return arr.filter(n => n)
+}
+
+// test sortByHeight([-1, 150, 190, 170, -1, -1, 160, 180])
+
+function getSumOfDigits(num){
+    let sum = 0;
+    let arr = String(num).split('');
+    arr.forEach(el => {
+        sum += +el
+    })
+    return +(String(sum)[0])
+}
+
+// test getSumOfDigits(100) => 1 // getSumOfDigits(91) => 1
