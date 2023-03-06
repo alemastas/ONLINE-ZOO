@@ -213,15 +213,11 @@ function deleteDigit(number){
 // deleteDigit(152) => 52
 
 function getDNSStats(arr){ // need to make this madness work
-    let elements = []
-    arr.forEach(el => {
-        elements.push(el.split('.'))
-    })
-    elements.forEach(el =>{
-        el.reverse()
-    })
-    return elements
-
+    let tempArr = []
+    for(let i = 0; i < arr.length; i++){
+        tempArr.push( arr[i].split('.') )
+    }
+    return tempArr;
 }
 
 function encoderLine(str){
