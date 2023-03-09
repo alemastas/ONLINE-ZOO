@@ -358,3 +358,20 @@ function getSumOfDigits(num){
 }
 
 // test getSumOfDigits(100) => 1 // getSumOfDigits(91) => 1
+
+// CODE WARS CODE WARS CODE WARS CODE WARS CODE WARS CODE WARS CODE WARS CODE WARS CODE WARS CODE WARS
+
+var runLengthEncoding = function(str){
+    const result = {}
+    let obj = {}
+    for(let i = 0; i < str.length; i++){
+      if( !Object.keys(obj).includes(str[i]) ){
+        obj[str[i]] = 1
+      } else { 
+        obj[str[i]]++ 
+            }
+    }
+    
+      let exitArr = Object.entries(obj)
+      return exitArr.map(([key, value]) => [value, key])
+}
