@@ -368,7 +368,7 @@ var runLengthEncoding = function(str){
     arr.map( el => {
         console.log('for the element : ', el)
         for(let i = 0; i < el.length; i++){
-            obj[str[i]] ? obj[str[i]]++ : obj[str[i]] = 1 
+            Object.keys(obj).includes([str[i]]) ? obj[str[i]]++ : obj[str[i]] = 1 
         }
         console.log('obj is ', obj)
         })
