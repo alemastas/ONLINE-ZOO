@@ -362,16 +362,15 @@ function getSumOfDigits(num){
 // CODE WARS CODE WARS CODE WARS CODE WARS CODE WARS CODE WARS CODE WARS CODE WARS CODE WARS CODE WARS
 
 var runLengthEncoding = function(str){
-    const result = {}
-    let obj = {}
-    for(let i = 0; i < str.length; i++){
-      if( !Object.keys(obj).includes(str[i]) ){
-        obj[str[i]] = 1
-      } else { 
-        obj[str[i]]++ 
-            }
-    }
-    
-      let exitArr = Object.entries(obj)
-      return exitArr.map(([key, value]) => [value, key])
+    let obj = []
+    let arr = str.split(/( )/);
+    console.log(arr)
+    arr.map( el => {
+        console.log('for the element : ', el)
+        for(let i = 0; i < el.length; i++){
+            obj[str[i]] ? obj[str[i]]++ : obj[str[i]] = 1 
+        }
+        console.log('obj is ', obj)
+        })
+    return Object.entries(obj).map(([key, value]) => [value, key])
 }
